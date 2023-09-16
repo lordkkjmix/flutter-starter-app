@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starter_app/core/providers/localization_provider.dart';
+import 'package:flutter_starter_app/i18n/i18n.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -20,14 +22,26 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Demo Home Page'),
+        title: const Text('Flutter Starter'),
+        actions: [
+          PopupMenuButton<Locale>(
+              onSelected: (item) {
+                LocalizationProvider.updateLocale(item);
+              },
+              itemBuilder: (context) => LocalizationProvider.supportedLocales
+                  .map(
+                    (e) => PopupMenuItem<Locale>(
+                        value: e, child: Text(e.languageCode)),
+                  )
+                  .toList()),
+        ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              'You have pushed the button this many times:'.translate,
             ),
             Text(
               '$_counter',
