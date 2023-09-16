@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_starter_app/core/constants/constant.dart';
+import 'package:flutter_starter_app/core/providers/error_handle_provider.dart';
 import 'package:flutter_starter_app/core/providers/injection_provider.dart';
 import 'package:flutter_starter_app/core/providers/localization_provider.dart';
 import 'package:flutter_starter_app/core/providers/route_provider.dart';
@@ -10,6 +12,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await InjectorProvider.init();
   await LocalizationProvider.initialize();
+  FlutterError.onError =
+      (details) => ErrorHandleProvider.onFlutterError(details);
+
+  PlatformDispatcher.instance.onError = (error, stackTrace) =>
+      ErrorHandleProvider.onPlatformError(error, stackTrace);
   runApp(const MyApp());
 }
 
@@ -82,6 +89,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver, RouteAware {
       ],
       locale: LocalizationProvider.currentLocale,
       supportedLocales: LocalizationProvider.supportedLocales,
+      navigatorKey: sl<GlobalKey<NavigatorState>>(),
+      scaffoldMessengerKey: sl<GlobalKey<ScaffoldMessengerState>>(),
     );
   }
 }

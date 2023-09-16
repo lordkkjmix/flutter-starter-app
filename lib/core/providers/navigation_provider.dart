@@ -134,13 +134,15 @@ class NavigationProvider {
 
   static dynamic dialog(Widget content,
       {bool barrierDismissible = true, String? barrierLabel, String? name}) {
-    showDialog(
-      context: context!,
-      barrierDismissible: barrierDismissible,
-      barrierLabel: barrierLabel,
-      routeSettings: name != null ? RouteSettings(name: name) : null,
-      builder: (BuildContext context) => content,
-    );
+    if (context != null) {
+      showDialog(
+        context: context!,
+        barrierDismissible: barrierDismissible,
+        barrierLabel: barrierLabel,
+        routeSettings: name != null ? RouteSettings(name: name) : null,
+        builder: (BuildContext context) => content,
+      );
+    }
   }
 
   static dynamic bottomSheet(

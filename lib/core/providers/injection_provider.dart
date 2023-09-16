@@ -17,5 +17,6 @@ class InjectorProvider {
     //Shared
     //External;
     sl.registerLazySingleton(() => navigatorKey);
+    sl.registerLazySingleton(() => messengerKey);
   }
 }
