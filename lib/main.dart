@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_starter_app/core/constants/constant.dart';
+import 'package:flutter_starter_app/core/providers/injection_provider.dart';
 import 'package:flutter_starter_app/core/providers/route_provider.dart';
 import 'package:flutter_starter_app/core/providers/theme_provider.dart';
-import 'package:flutter_starter_app/features/main/presentation/pages/main_page.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await InjectorProvider.init();
   runApp(const MyApp());
 }
 
