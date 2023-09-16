@@ -13,6 +13,7 @@ This Flutter app boilerplate provides a solid foundation for quickly and easily 
 * **Widgets**: (Coming soon)
 * **Pages**: (Coming soon)
 * **Flow**: (Coming soon)
+* **API**: (Coming soon)
 * **Documentation**: The boilerplate includes comprehensive documentation to help you understand how to use it.
 
 ### Getting Started
@@ -34,7 +35,7 @@ The boilerplate is licensed under the MIT license.
 
 **:fr: French**
 
-Cette application de deFlutter Boilerplate fournit une base solide pour créer rapidement et facilement de nouvelles applications Flutter.
+Cette application de démarrage (Boilerplate) fournit une base solide pour créer rapidement et facilement de nouvelles applications Flutter.
 
 ### Fonctionnalités de Boilerplate
 
@@ -43,6 +44,10 @@ Cette application de deFlutter Boilerplate fournit une base solide pour créer r
 * **Prise en charge de l’internationalisation** : Cet boilerplate inclut la prise en charge de l’internationalisation, ce qui facilite la traduction de l’application dans plusieurs langues.
 * **Tests unitaires et de widgets** : Cet boilerplate inclut des tests unitaires et de widgets pour garantir que le code fonctionne comme prévu.
 * **Documentation** : Boilerplate inclut une documentation complète pour vous aider à comprendre comment l’utiliser.
+* **Widgets**: (Bientôt)
+* **Pages**: (Bientôt)
+* **Flow**: (Bientôt)
+* **API**: (Bientôt)
 
 ### Premiers pas
 
