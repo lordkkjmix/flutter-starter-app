@@ -14,7 +14,6 @@ void main() async {
   await LocalizationProvider.initialize();
   FlutterError.onError =
       (details) => ErrorHandleProvider.onFlutterError(details);
-
   PlatformDispatcher.instance.onError = (error, stackTrace) =>
       ErrorHandleProvider.onPlatformError(error, stackTrace);
   runApp(const MyApp());
