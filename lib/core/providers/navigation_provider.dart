@@ -3,6 +3,7 @@ import 'package:flutter_starter_app/core/providers/injection_provider.dart';
 
 class NavigationProvider {
   //Use navigation provider to navigate in the app globally without set th context, because context passed in the injector
+  //You can use your own route provider
   static final GlobalKey<NavigatorState> _navigatorKey =
       sl<GlobalKey<NavigatorState>>();
 

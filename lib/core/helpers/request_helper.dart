@@ -1,3 +1,4 @@
+import 'package:flutter_starter_app/core/providers/injection_provider.dart';
 import 'package:flutter_starter_app/core/providers/request_provider.dart';
 
 const defaultHeader = {
@@ -14,35 +15,30 @@ class RequestHelper {
   Future<dynamic> get(String url,
           {Map<String, dynamic>? headers,
           Map<String, dynamic>? queryParams}) async =>
-      RequestProvider(
-        apiBaseUrl,
-        headers: headers,
-      ).get(url);
+      sl<RequestProvider>()
+          .get(url, headers: headers, queryParams: queryParams);
   Future<dynamic> post(
-    String url, {
+    String url,
+    Map<String, dynamic> body, {
     Map<String, dynamic>? headers,
-    Map<String, dynamic>? body,
   }) async =>
-      RequestProvider(
-        apiBaseUrl,
-        headers: headers,
-      ).post(
-        url,
-        body: body,
-      );
+      sl<RequestProvider>().post(url, body: body, headers: headers);
   static Future<dynamic> patch(
-    String url, {
+    String url,
+    Map<String, dynamic> body, {
     Map<String, dynamic>? headers,
-    Map<String, dynamic>? body,
-  }) async {}
+  }) async =>
+      sl<RequestProvider>().patch(url, body: body, headers: headers);
   static Future<dynamic> put(
-    String url, {
+    String url,
+    Map<String, dynamic> body, {
     Map<String, dynamic>? headers,
-    Map<String, dynamic>? body,
-  }) async {}
+  }) async =>
+      sl<RequestProvider>().put(url, body: body, headers: headers);
   static Future<dynamic> delete(
-    String url, {
+    String url,
+    Map<String, dynamic> body, {
     Map<String, dynamic>? headers,
-    Map<String, dynamic>? body,
-  }) async {}
+  }) async =>
+      sl<RequestProvider>().delete(url, body: body, headers: headers);
 }

@@ -4,21 +4,66 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_starter_app/core/errors/exceptions.dart';
 
-class RequestProvider {
-  //Implement here your own own http client
-  final String apiBaseUrl;
-  final Map<String, dynamic>? headers;
-  final Duration? timeout;
-  const RequestProvider(this.apiBaseUrl, {this.headers, this.timeout});
+abstract class RequestProvider {
+  Future<Response> get(
+    String url, {
+    int dioCacheExpireDays = 1,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? queryParams,
+    String? customBaseUrl,
+    Duration? timeout,
+  });
+  Future<Response> post(
+    String url, {
+    required Map<String, dynamic> body,
+    encoding,
+    Function(int level, int total)? onSendProgress,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
+  });
+  Future<Response> patch(
+    String url, {
+    Map<String, dynamic>? body,
+    encoding,
+    Function(int level, int total)? onSendProgress,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
+  });
+  Future<Response> put(
+    String url, {
+    Map<String, dynamic>? body,
+    encoding,
+    Function(int level, int total)? onSendProgress,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
+  });
+  Future<Response> delete(
+    String url, {
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
+  });
+}
 
-  Future<Dio> apiClientInit() async {
+class RequestProviderImpl implements RequestProvider {
+  //Implement here your own own http client
+  const RequestProviderImpl();
+
+  Future<Dio> apiClientInit(
+      {String? apiBaseUrl,
+      Map<String, dynamic>? headers,
+      Duration? timeout}) async {
     final Dio dio = Dio();
     if (timeout != null) {
       dio.options.connectTimeout = timeout;
       dio.options.receiveTimeout = timeout;
     }
     dio.options.headers = headers;
-    dio.options.baseUrl = apiBaseUrl;
+    dio.options.baseUrl = apiBaseUrl ?? "";
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: RequestInterceptor().onRequest,
@@ -59,13 +104,17 @@ class RequestProvider {
     }
   }
 
-  Future<Response> get(
-    String url, {
-    int dioCacheExpireDays = 1,
-    bool enableDioCache = false,
-  }) async {
+  @override
+  Future<Response> get(String url,
+      {int dioCacheExpireDays = 1,
+      String? customBaseUrl,
+      bool enableDioCache = false,
+      Duration? timeout,
+      Map<String, dynamic>? headers,
+      Map<String, dynamic>? queryParams}) async {
     try {
-      final Dio dio = await apiClientInit();
+      final Dio dio = await apiClientInit(
+          apiBaseUrl: customBaseUrl, headers: headers, timeout: timeout);
       // AppLogger.printDebug('[App Api Helper - GET $url]');
       if (enableDioCache) {
         // dio.interceptors.add(DioCacheManager(CacheConfig()).interceptor);
@@ -83,14 +132,19 @@ class RequestProvider {
     }
   }
 
+  @override
   Future<Response> post(
     String url, {
-    required body,
+    required Map<String, dynamic> body,
     encoding,
     Function(int level, int total)? onSendProgress,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
   }) async {
     try {
-      final Dio dio = await apiClientInit();
+      final Dio dio = await apiClientInit(
+          apiBaseUrl: customBaseUrl, headers: headers, timeout: timeout);
       debugPrint('[API Helper - POST $url] Server Request: $body');
       final response = await dio.post(
         url,
@@ -104,14 +158,19 @@ class RequestProvider {
     }
   }
 
+  @override
   Future<Response> put(
     String url, {
-    required body,
+    body,
     encoding,
     Function(int level, int total)? onSendProgress,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
   }) async {
     try {
-      final Dio dio = await apiClientInit();
+      final Dio dio = await apiClientInit(
+          apiBaseUrl: customBaseUrl, headers: headers, timeout: timeout);
 
       debugPrint('[API Helper - PUT $url]  Server Request: $body');
       final response = await dio.put(
@@ -128,14 +187,44 @@ class RequestProvider {
     }
   }
 
+  @override
   Future<Response> patch(
     String url, {
-    required body,
+    body,
     encoding,
     Function(int level, int total)? onSendProgress,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
   }) async {
     try {
-      final Dio dio = await apiClientInit();
+      final Dio dio = await apiClientInit(
+          apiBaseUrl: customBaseUrl, headers: headers, timeout: timeout);
+      debugPrint('[API Helper - PUT $url]  Server Request: $body');
+      final response = await dio.patch(
+        url,
+        data: body,
+      );
+      return response;
+    } on DioException catch (e) {
+      throw getRequestExceptionFromHttpClient(e);
+    } catch (e) {
+      debugPrint(e.toString());
+      throw RequestException(statusCode: -1, message: e.toString());
+    }
+  }
+
+  @override
+  Future<Response> delete(
+    String url, {
+    body,
+    Map<String, dynamic>? headers,
+    String? customBaseUrl,
+    Duration? timeout,
+  }) async {
+    try {
+      final Dio dio = await apiClientInit(
+          apiBaseUrl: customBaseUrl, headers: headers, timeout: timeout);
       debugPrint('[API Helper - PUT $url]  Server Request: $body');
       final response = await dio.patch(
         url,
