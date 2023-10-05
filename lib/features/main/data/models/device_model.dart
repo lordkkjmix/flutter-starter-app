@@ -32,22 +32,24 @@ class DeviceModel extends Device {
   final String? installationId;
   @override
   final String? deviceLocale;
+  @override
+  final String? buildSignature;
 
-  const DeviceModel({
-    this.deviceUniqueIdentifier,
-    this.model,
-    this.brand,
-    this.timeZone,
-    this.deviceToken,
-    this.appBuildNumber,
-    this.systemVersion,
-    this.deviceType,
-    this.appVersion,
-    this.appIdentifier,
-    this.installerStore,
-    this.installationId,
-    this.deviceLocale,
-  });
+  const DeviceModel(
+      {this.deviceUniqueIdentifier,
+      this.model,
+      this.brand,
+      this.timeZone,
+      this.deviceToken,
+      this.appBuildNumber,
+      this.systemVersion,
+      this.deviceType,
+      this.appVersion,
+      this.appIdentifier,
+      this.installerStore,
+      this.installationId,
+      this.deviceLocale,
+      this.buildSignature});
 
   factory DeviceModel.fromJson(Map<String, dynamic> json) =>
       _$DeviceModelFromJson(json);

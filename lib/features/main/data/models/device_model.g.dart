@@ -20,6 +20,7 @@ DeviceModel _$DeviceModelFromJson(Map<String, dynamic> json) => DeviceModel(
       installerStore: json['installerStore'] as String?,
       installationId: json['installationId'] as String?,
       deviceLocale: json['deviceLocale'] as String?,
+      buildSignature: json['buildSignature'] as String?,
     );
 
 Map<String, dynamic> _$DeviceModelToJson(DeviceModel instance) {
@@ -44,5 +45,6 @@ Map<String, dynamic> _$DeviceModelToJson(DeviceModel instance) {
   writeNotNull('installerStore', instance.installerStore);
   writeNotNull('installationId', instance.installationId);
   writeNotNull('deviceLocale', instance.deviceLocale);
+  writeNotNull('buildSignature', instance.buildSignature);
   return val;
 }

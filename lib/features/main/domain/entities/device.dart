@@ -14,6 +14,7 @@ class Device extends Equatable {
   final String? installerStore;
   final String? installationId;
   final String? deviceLocale;
+  final String? buildSignature;
 
   const Device({
     this.deviceUniqueIdentifier,
@@ -29,6 +30,7 @@ class Device extends Equatable {
     this.installerStore,
     this.installationId,
     this.deviceLocale,
+    this.buildSignature,
   });
   Device copyWith({
     String? deviceUniqueIdentifier,
@@ -44,6 +46,7 @@ class Device extends Equatable {
     String? installerStore,
     String? installationId,
     String? deviceLocale,
+    String? buildSignature,
   }) {
     return Device(
       deviceUniqueIdentifier:
@@ -60,6 +63,7 @@ class Device extends Equatable {
       installerStore: installerStore ?? this.installerStore,
       installationId: installationId ?? this.installationId,
       deviceLocale: deviceLocale ?? this.deviceLocale,
+      buildSignature: buildSignature ?? this.buildSignature,
     );
   }
 
@@ -78,6 +82,7 @@ class Device extends Equatable {
       'installerStore': installerStore,
       'installationId': installationId,
       'deviceLocale': deviceLocale,
+      'buildSignature': buildSignature,
     };
   }
 
