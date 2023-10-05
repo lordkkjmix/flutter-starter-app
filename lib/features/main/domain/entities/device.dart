@@ -5,27 +5,45 @@ class Device extends Equatable {
   final String? model;
   final String? brand;
   final String? timeZone;
-  final String? notificationToken;
+  final String? deviceToken;
   final String? appBuildNumber;
   final String? systemVersion;
+  final String? deviceType;
+  final String? appVersion;
+  final String? appIdentifier;
+  final String? installerStore;
+  final String? installationId;
+  final String? deviceLocale;
 
   const Device({
     this.deviceUniqueIdentifier,
     this.model,
     this.brand,
     this.timeZone,
-    this.notificationToken,
+    this.deviceToken,
     this.appBuildNumber,
     this.systemVersion,
+    this.deviceType,
+    this.appVersion,
+    this.appIdentifier,
+    this.installerStore,
+    this.installationId,
+    this.deviceLocale,
   });
   Device copyWith({
     String? deviceUniqueIdentifier,
     String? model,
     String? brand,
     String? timeZone,
-    String? notificationToken,
+    String? deviceToken,
     String? appBuildNumber,
     String? systemVersion,
+    String? deviceType,
+    String? appVersion,
+    String? appIdentifier,
+    String? installerStore,
+    String? installationId,
+    String? deviceLocale,
   }) {
     return Device(
       deviceUniqueIdentifier:
@@ -33,9 +51,15 @@ class Device extends Equatable {
       model: model ?? this.model,
       brand: brand ?? this.brand,
       timeZone: timeZone ?? this.timeZone,
-      notificationToken: notificationToken ?? this.notificationToken,
+      deviceToken: deviceToken ?? this.deviceToken,
       appBuildNumber: appBuildNumber ?? this.appBuildNumber,
       systemVersion: systemVersion ?? this.systemVersion,
+      deviceType: deviceType ?? this.deviceType,
+      appVersion: appVersion ?? this.appVersion,
+      appIdentifier: appIdentifier ?? this.appIdentifier,
+      installerStore: installerStore ?? this.installerStore,
+      installationId: installationId ?? this.installationId,
+      deviceLocale: deviceLocale ?? this.deviceLocale,
     );
   }
 
@@ -45,9 +69,15 @@ class Device extends Equatable {
       'model': model,
       'brand': brand,
       'timeZone': timeZone,
-      'notificationToken': notificationToken,
+      'notificationToken': deviceToken,
       'appBuildNumber': appBuildNumber,
       'systemVersion': systemVersion,
+      'deviceType': deviceType,
+      'appVersion': appVersion,
+      'appIdentifier': appIdentifier,
+      'installerStore': installerStore,
+      'installationId': installationId,
+      'deviceLocale': deviceLocale,
     };
   }
 
@@ -57,8 +87,14 @@ class Device extends Equatable {
         model,
         brand,
         timeZone,
-        notificationToken,
+        deviceToken,
         appBuildNumber,
         systemVersion,
+        deviceType,
+        appVersion,
+        appIdentifier,
+        installerStore,
+        installationId,
+        deviceLocale,
       ];
 }

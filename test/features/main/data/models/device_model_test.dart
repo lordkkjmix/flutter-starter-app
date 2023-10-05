@@ -55,11 +55,11 @@ void main() {
     final updatedDevice = deviceEntity.copyWith(
       model: 'Model B',
       brand: 'Brand Y',
-      notificationToken: 'newToken',
+      deviceToken: 'newToken',
     );
     // Verify that updatedDevice has the updated values
     expect(updatedDevice.model, 'Model B');
     expect(updatedDevice.brand, 'Brand Y');
-    expect(updatedDevice.notificationToken, 'newToken');
+    expect(updatedDevice.deviceToken, 'newToken');
   });
 }

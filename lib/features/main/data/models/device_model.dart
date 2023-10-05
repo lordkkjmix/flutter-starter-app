@@ -15,20 +15,38 @@ class DeviceModel extends Device {
   @override
   final String? timeZone;
   @override
-  final String? notificationToken;
+  final String? deviceToken;
   @override
   final String? appBuildNumber;
   @override
   final String? systemVersion;
+  @override
+  final String? deviceType;
+  @override
+  final String? appVersion;
+  @override
+  final String? appIdentifier;
+  @override
+  final String? installerStore;
+  @override
+  final String? installationId;
+  @override
+  final String? deviceLocale;
 
   const DeviceModel({
     this.deviceUniqueIdentifier,
     this.model,
     this.brand,
+    this.timeZone,
+    this.deviceToken,
     this.appBuildNumber,
     this.systemVersion,
-    this.timeZone,
-    this.notificationToken,
+    this.deviceType,
+    this.appVersion,
+    this.appIdentifier,
+    this.installerStore,
+    this.installationId,
+    this.deviceLocale,
   });
 
   factory DeviceModel.fromJson(Map<String, dynamic> json) =>

@@ -1,7 +1,16 @@
 {
     "brand": "samsung",
-    "model": "s20",
-    "deviceUniqueIdentifier": "hkm",
-    "appBuildNumber": 1,
-    "systemVersion": "1.0"
+    "model": "SM-G781B",
+    "deviceUniqueIdentifier": "f2988113e0f048d6",
+    "systemVersion": "samsung/r8qxeea/r8q: 13/TP1A.220624.014/G781BXXU7HWH5:user/release-keys",
+    "appVersion": "1.0.0",
+    "appBuildNumber": "1",
+    "appIdentifier": "com.example.flutter_starter_app",
+    "installerStore": "",
+    "buildSignature": "947D6007F63FB0708B5E7B12CC8BCD80348C683A",
+    "timeZone": "Africa/Abidjan",
+    "deviceToken": "from Firebase or Huawei",
+    "deviceType": "android",
+    "installationId": "",
+    "deviceLocale": "en"
 }
