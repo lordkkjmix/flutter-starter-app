@@ -31,3 +31,8 @@ class AppState extends Equatable {
 }
 
 class AppInitial extends AppState {}
+
+class AppError extends AppState {
+  final String? errorMessage;
+  const AppError({this.errorMessage});
+}

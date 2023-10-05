@@ -55,6 +55,7 @@ dependencies:
   package_info_plus: ^4.1.0
   connectivity_plus: ^4.0.2
   flutter_timezone: ^1.0.7
+  mockito: ^5.4.2
 
 dev_dependencies:
   flutter_test:

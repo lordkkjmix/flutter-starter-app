@@ -24,8 +24,7 @@ class AppSettingUseCase extends UseCase<Device, NoParams> {
     return await appSettingRepository.getConnectivity();
   }
 
-  Future<Either<Failure, List<AppSetting>>> getDeviceInfo(
-      NoParams params) async {
+  Future<Either<Failure, List<AppSetting>>> getSettings(NoParams params) async {
     return await appSettingRepository.getSettings();
   }
 }
