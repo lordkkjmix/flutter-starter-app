@@ -39,7 +39,7 @@ class AppSettingLocalDataSourceImpl implements AppSettingLocalDataSource {
     try {
       return await deviceProvider.device;
     } catch (e) {
-      throw PlatformException();
+      throw PlatformException(message: e.toString());
     }
   }
 

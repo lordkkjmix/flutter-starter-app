@@ -2,7 +2,12 @@ class ServerException implements Exception {}
 
 class CacheException implements Exception {}
 
-class PlatformException implements Exception {}
+class PlatformException implements Exception {
+  final String? message;
+  const PlatformException({
+    this.message,
+  });
+}
 
 class RequestException implements Exception {
   final String? message;
