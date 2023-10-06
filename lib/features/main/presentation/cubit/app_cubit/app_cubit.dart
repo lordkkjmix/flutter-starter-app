@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_starter_app/core/errors/failures.dart';
 import 'package:flutter_starter_app/core/usescases/usecases.dart';
 import 'package:flutter_starter_app/features/main/domain/entities/device.dart';
 import 'package:flutter_starter_app/features/main/domain/usecases/app_setting_usecase.dart';
@@ -19,6 +20,8 @@ class AppCubit extends Cubit<AppState> {
 
   getDevice() async {
     final failedOrDevice = await _settingUseCase(NoParams());
-    failedOrDevice.fold(((l) => null), (r) => emit(state.copyWith(device: r)));
+    failedOrDevice.fold(
+        ((l) => emit(AppError(errorMessage: l.message.toString()))),
+        (r) => emit(state.copyWith(device: r)));
   }
 }

@@ -8,12 +8,13 @@ import 'package:flutter_starter_app/features/main/domain/entities/device.dart';
 import 'package:flutter_starter_app/features/main/domain/usecases/app_setting_usecase.dart';
 import 'package:flutter_starter_app/features/main/presentation/cubit/app_cubit/app_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
+import 'app_cubit_test.mocks.dart';
 
-class MockAppSettingUseCase extends Mock implements AppSettingUseCase {}
-
+@GenerateMocks([AppSettingUseCase])
 void main() {
   late AppCubit appCubit;
   late MockAppSettingUseCase mockSettingUseCase;
@@ -49,17 +50,15 @@ void main() {
   });
 
   test('getDevice should emit AppError when there is a failure', () async {
-    // Configurez le mock pour renvoyer une erreur lorsque le UseCase est appelé
-    when(mockSettingUseCase(NoParams())).thenAnswer(
-        (_) async => const Left(ServerFailure(message: 'Some error message')));
-
-    // Appelez la méthode getDevice
+    // arrange
+    when(mockSettingUseCase(NoParams()))
+        .thenAnswer((_) async => Left(CacheFailure()));
+    // act
     appCubit.getDevice();
-
-    // Attendez l'émission de l'état AppError
+    // assert
     await expectLater(
       appCubit.stream,
-      emitsInOrder([const AppError(errorMessage: 'Some error message')]),
+      emitsInOrder([const AppError(errorMessage: "Error Message")]),
     );
   });
 }
