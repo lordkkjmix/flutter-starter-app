@@ -16,8 +16,9 @@ class AppSettingRemoteDataSourceImpl implements AppSettingRemoteDataSource {
 
   @override
   Future<List<AppSettingModel>> getSettings() async {
-    // TODO:Get all settings from api
-    throw UnimplementedError();
+    return await requestProvider.get("/").then((value) =>
+        decodeDataSourceResponse<AppSettingModel>(value,
+            decoder: ((item) => AppSettingModel.fromJson(item))));
   }
 
   @override

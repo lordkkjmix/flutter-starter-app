@@ -9,7 +9,7 @@ part of 'app_setting_model.dart';
 AppSettingModel _$AppSettingModelFromJson(Map<String, dynamic> json) =>
     AppSettingModel(
       appVersion: json['appVersion'] as String?,
-      appBuildNumber: json['appBuildNumber'] as int?,
+      appBuildNumber: json['appBuildNumber'] as String?,
       isMandatoryUpdate: json['isMandatoryUpdate'] as bool?,
     );
 

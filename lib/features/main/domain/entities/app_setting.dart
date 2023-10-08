@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class AppSetting extends Equatable {
   final String? appVersion;
-  final int? appBuildNumber;
+  final String? appBuildNumber;
   final bool? isMandatoryUpdate;
 
   const AppSetting({
@@ -20,7 +20,7 @@ class AppSetting extends Equatable {
 
   AppSetting copyWith({
     String? appVersion,
-    int? appBuildNumber,
+    String? appBuildNumber,
     bool? isMandatoryUpdate,
   }) {
     return AppSetting(

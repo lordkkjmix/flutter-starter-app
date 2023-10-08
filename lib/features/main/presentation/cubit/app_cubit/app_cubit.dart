@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_app/core/errors/failures.dart';
 import 'package:flutter_starter_app/core/usescases/usecases.dart';
 import 'package:flutter_starter_app/features/main/domain/entities/device.dart';
 import 'package:flutter_starter_app/features/main/domain/usecases/app_setting_usecase.dart';

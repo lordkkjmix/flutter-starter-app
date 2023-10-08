@@ -55,13 +55,13 @@ void main() {
   test('copyWith should create a new AppSetting with updated values', () {
     final updatedSetting = appSettingEntity.copyWith(
       appVersion: '2.0',
-      appBuildNumber: 456,
+      appBuildNumber: "456",
       isMandatoryUpdate: true,
     );
 
     // Verify that updatedSetting has the updated values
     expect(updatedSetting.appVersion, '2.0');
-    expect(updatedSetting.appBuildNumber, 456);
+    expect(updatedSetting.appBuildNumber, "456");
     expect(updatedSetting.isMandatoryUpdate, true);
   });
 }
