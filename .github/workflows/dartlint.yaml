@@ -9,19 +9,27 @@ on:
       - main  # Change this to your main branch name
 
 jobs:
-  lint:
-    name: Dart Lint
+  pubs:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Dart SDK
-        uses: actions/setup-dart@v1
-
-      - name: Install dependencies
-        run: dart pub get
-
-      - name: Run Dart Lint
-        run: dart analyze .
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.x'
+          channel: 'stable' # or: 'beta', 'dev' or 'master'
+      - name: Check version
+        run: flutter --version
+      - name: Check Install dependencies
+        run: flutter pub get 
+  dart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.x'
+          channel: 'stable' # or: 'beta', 'dev' or 'master'
+      - name: Check version
+        run: flutter --version
+      - name: Analyze dart code
+        run: flutter analyze
