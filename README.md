@@ -1,5 +1,7 @@
 # flutter_starter_app
 
+[![codecov](https://codecov.io/gh/lordkkjmix/flutter-starter-app/graph/badge.svg?token=FNYRMQ0KRQ)](https://codecov.io/gh/lordkkjmix/flutter-starter-app)
+
 **:us: English:**
 
 This Flutter app boilerplate provides a solid foundation for quickly and easily creating new Flutter apps.
