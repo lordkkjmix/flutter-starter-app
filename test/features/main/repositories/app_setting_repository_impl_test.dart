@@ -63,8 +63,7 @@ void main() {
     test('should return a Left(ServerFailure) when an exception occurs',
         () async {
       // Arrange
-      when(mockNetworkProvider.onConnectivityChanged)
-          .thenThrow(Exception("Failed"));
+      when(mockNetworkProvider.onConnectivityChanged).thenThrow("Failed");
 
       // Act
       final result = await repository.getStreamConnectivity();
@@ -91,7 +90,7 @@ void main() {
     test('should return Left(ServerFailure) when an exception occurs',
         () async {
       // Arrange
-      when(mockLocalDataSource.getDevice()).thenThrow(Exception("Failed"));
+      when(mockLocalDataSource.getDevice()).thenThrow("Failed");
 
       // Act
       final result = await repository.getDeviceInfo();
@@ -119,7 +118,7 @@ void main() {
     test('should return Left(ServerFailure) when an exception occurs',
         () async {
       // Arrange
-      when(mockRemoteDataSource.getSettings()).thenThrow(Exception("Failed"));
+      when(mockRemoteDataSource.getSettings()).thenThrow("Failed");
 
       // Act
       final result = await repository.getSettings();
@@ -146,7 +145,7 @@ void main() {
         () async {
       // Arrange
       when(mockLocalDataSource.writeSetting(appSettingModel))
-          .thenThrow(Exception("Failed"));
+          .thenThrow("Failed");
 
       // Act
       final result = await repository.writeSetting(setting: appSettingModel);
