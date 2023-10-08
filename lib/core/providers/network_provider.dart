@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_starter_app/core/providers/injection_provider.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_starter_app/core/providers/injection_provider.dart';
 abstract class NetworkProvider {
   Future<bool> get isConnected;
   Stream<bool> get onConnectivityChanged;
+  Future<bool> get getInternetStatus;
 }
 
 class NetworkInfoImpl implements NetworkProvider {
@@ -37,5 +39,16 @@ class NetworkInfoImpl implements NetworkProvider {
 
     final Stream<bool> boolStream = boolStreamController.stream;
     return boolStream;
+  }
+
+  @override
+  Future<bool> get getInternetStatus => getInternetStatusFromPackage();
+  Future<bool> getInternetStatusFromPackage() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      return false;
+    }
   }
 }

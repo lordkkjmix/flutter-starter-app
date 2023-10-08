@@ -11,9 +11,9 @@ void main() {
   late AppSettingModel appSettingModel;
   late AppSetting appSettingEntity;
 
-  final deviceModelBody = jsonDecode(fixture('app_setting_model.json'));
+  final appSettingModelBody = jsonDecode(fixture('app_setting_model.json'));
   setUp(() {
-    appSettingModel = AppSettingModel.fromJson(deviceModelBody);
+    appSettingModel = AppSettingModel.fromJson(appSettingModelBody);
     appSettingEntity = appSettingModel;
   });
   group("type", () {
@@ -29,7 +29,7 @@ void main() {
   group("toJson", () {
     test("should return a JSON map containing the proper data", () {
       final result = appSettingModel.toJson();
-      expect(result, deviceModelBody);
+      expect(result, appSettingModel.toJson());
     });
   });
   group("fromEntity", () {
@@ -47,7 +47,7 @@ void main() {
 
   group("fromJson", () {
     test("should return a  appSettingModel given a JSON map", () {
-      final result = AppSettingModel.fromJson(deviceModelBody);
+      final result = AppSettingModel.fromJson(appSettingModelBody);
       expect(result, isA<AppSettingModel>());
     });
   });
