@@ -3,15 +3,21 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter_starter_app/core/errors/failures.dart';
+import 'package:flutter_starter_app/core/providers/network_provider.dart';
+import 'package:flutter_starter_app/features/main/data/datasources/app_setting_local_data_source.dart';
+import 'package:flutter_starter_app/features/main/data/datasources/app_setting_remote_data_source.dart';
 import 'package:flutter_starter_app/features/main/data/models/app_setting_model.dart';
 import 'package:flutter_starter_app/features/main/data/models/device_model.dart';
 import 'package:flutter_starter_app/features/main/data/repositories/app_setting_repository_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../fixtures/fixture_reader.dart';
 import 'app_setting_repository_impl_test.mocks.dart';
 
+@GenerateMocks(
+    [NetworkProvider, AppSettingLocalDataSource, AppSettingRemoteDataSource])
 void main() {
   late AppSettingRepositoryImpl repository;
   late MockAppSettingLocalDataSource mockLocalDataSource;

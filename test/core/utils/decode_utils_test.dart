@@ -4,10 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_starter_app/core/errors/exceptions.dart';
 import 'package:flutter_starter_app/core/errors/failures.dart';
 import 'package:flutter_starter_app/core/utils/decode_utils.dart';
-import 'package:flutter_starter_app/features/main/data/models/app_setting_model.dart';
 import 'package:flutter_starter_app/features/main/data/models/device_model.dart';
 import 'package:flutter_starter_app/features/main/domain/entities/app_setting.dart';
-import 'package:flutter_starter_app/features/main/domain/entities/device.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../fixtures/fixture_reader.dart';

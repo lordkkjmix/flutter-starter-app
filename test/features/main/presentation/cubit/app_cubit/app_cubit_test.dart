@@ -32,9 +32,6 @@ void main() {
   test('Initial state should be AppInitial', () {
     expect(appCubit.state, equals(AppInitial()));
   });
-  Future<Device> getDevice() async {
-    return deviceEntity;
-  }
 
   test('getDevice should emit when successful', () async {
     // arrange
