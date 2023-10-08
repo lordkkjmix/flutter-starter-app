@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 part of 'connectivity_cubit.dart';
 
 abstract class ConnectivityState extends Equatable {

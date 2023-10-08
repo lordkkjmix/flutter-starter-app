@@ -1,0 +1,27 @@
+name: Dart Lint
+
+on:
+  pull_request:
+    branches:
+      - main  # Change this to your main branch name
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  lint:
+    name: Dart Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Dart SDK
+        uses: actions/setup-dart@v1
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Run Dart Lint
+        run: dart analyze .
