@@ -93,11 +93,11 @@ flutter:
 # Translation files folder
     - assets/i18n/locale/
 # Images files (png,jpeg,webp...) folder
-    - assets/images/
+#   - assets/images/
 # Images files (svg...) folder
-    - assets/icons/
+#  - assets/icons/
 # Animation files(lottie,rive...) folder
-    - assets/animations/
+#    - assets/animations/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
