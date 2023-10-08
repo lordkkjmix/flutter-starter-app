@@ -8,10 +8,12 @@ dynamic decodeDataSourceResponse<T>(
 }) {
   try {
     switch (response.runtimeType) {
-      case List<T>:
+      case List:
         final List<T> dataList =
             response.map((e) => decoder(e)).toList().cast<T>();
         return dataList;
+      case String:
+        return response;
       default:
         return decoder(Map<String, dynamic>.from(response));
     }
